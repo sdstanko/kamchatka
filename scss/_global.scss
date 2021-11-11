@@ -1,0 +1,300 @@
+html, body {
+	height: 100%;
+	
+}
+
+body {
+	font-family: 'Lato',
+	sans-serif;
+}
+
+.lock {
+	overflow: hidden;
+}
+
+.wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+}
+
+.container {
+	width: 100%;
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+.burger {
+	display: block;
+	position: relative;
+	width: 24px;
+	height: 19px;
+	cursor: pointer;
+
+	@media (min-width: $screen-lg) {
+		display: none;
+
+	}
+
+	span {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 3px;
+		background-color: #212121;
+		border-radius: 1px;
+		transition: transform .2s linear;
+
+		&:nth-child(2) {
+			top: 8px;
+		}
+
+		&:last-child {
+			bottom: 0;
+		}
+	}
+
+	&.active {
+		span {
+			&:first-child {
+				top: 50%;
+				left: 0;
+				transform: rotate(45deg);
+			}
+
+			&:nth-child(2) {
+				transform: scale(0);
+			}
+
+			&:last-child {
+				top: 50%;
+				left: 0;
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}
+
+.ibg {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.ibg img {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.swiper-initialized {
+	overflow: hidden;
+}
+
+.swiper-wrapper {
+	display: flex;
+}
+
+.slide {
+	position: relative;
+	width: 270px;
+	height: 270px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	overflow: hidden;
+
+	&__body {
+		position: relative;
+		width: 210px;
+		height: 210px;
+		transition: height .5s ease 0s,
+		width .5s ease 0s;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(#000000, 0.3);
+		}
+	}
+
+	&__image {
+		position: relative;
+		height: 100%;
+	}
+
+	&__link {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 171%;
+		text-decoration: none;
+		color: $white;
+	}
+
+	&__text {
+		position: absolute;
+		bottom: 12px;
+		left: 12px;
+		font-size: 14px;
+	}
+
+	&__descr {
+		font-weight: 400;
+		display: block;
+		font-size: 14px;
+		line-height: 24 / 14 * 100%;
+		color: #BDBDBD;
+	}
+}
+
+.swiper-slide-active {
+
+	.slide__body {
+		width: 270px;
+		height: 270px;
+		
+		&::before {
+			background: linear-gradient(2.71deg, rgba(0, 0, 0, 0.78) 1.78%, rgba(0, 0, 0, 0) 60.08%);
+		}
+	}
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	position: absolute;
+	bottom: -58px;
+	font-size: 38px;
+	color: $white;
+	cursor: pointer;
+	opacity: 0.5;
+	transition: .2s linear;
+
+	&::after {
+		display: none;
+	}
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.swiper-button-prev {
+	transform: rotate(180deg)
+}
+
+.swiper-button-next {
+	transform: translateX(54px);
+}
+
+.link-arrow {
+	position: relative;
+	padding-right: 82px;
+	font-size: 18px;
+	line-height: 133%;
+	color: inherit;
+	transition: .2s linear;
+	white-space: nowrap;
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 64px;
+		height: 64px;
+		top: 50%;
+		right: 0px;
+		transform: translateY(-50%);
+		background: url('../images/icons/right-arrow.svg') 50% 50%;
+		background-repeat: no-repeat;
+		border: 1px solid $white;
+		border-radius: 50%;
+		transition: .2s linear;
+
+		@media (max-width: $screen-md) {
+			width: 48px;
+			height: 48px;
+		}
+	}
+
+	&:hover {
+		color: $secondary;
+
+		&::after {
+			border-color: $secondary;
+		}
+	}
+
+	&--price {
+		color: $black;
+
+		&::after {
+			background: url('../images/icons/right-arrow-black.svg') 50% 50% no-repeat;
+			border: 1px solid #212121;
+		}
+	}
+}
+
+.title {
+	position: relative;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 50 / 40 * 100%;
+	color: $white;
+
+	@media (max-width: $screen-md) {
+		font-size: 24px;
+	}
+
+	&__point {
+		position: absolute;
+		top: 10px;
+		left: -64px;
+		display: block;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		border: 3px solid #6C6C6C;
+
+		@media (max-width: $screen-xl) {
+			display: none;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 16px;
+			height: 16px;
+			transform: translate3d(-50%, -50%, 0);
+			background-color: $secondary;
+			border-radius: 50%;
+		}
+	}
+
+	&__orange {
+		color: $secondary;
+	}
+
+	&--black {
+		color: $black;
+	}
+}
+
+.day-text {
+	font-size: 16px;
+	line-height: 24 / 16 * 100%;
+	color: #313131;
+}
